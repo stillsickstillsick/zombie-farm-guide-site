@@ -1,0 +1,1 @@
+(function(){try{var t=localStorage.getItem('farm-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}})();
