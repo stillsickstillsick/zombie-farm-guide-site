@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+from pathlib import Path
+from io import BytesIO
+import json,hashlib,requests
+from PIL import Image
+P=Path(__file__).resolve().parents[1]; cats=['buildings','materials','locations']; D={c:json.loads((P/'data'/f'{c}.json').read_text()) for c in cats};ix={(c,x['slug']):x for c,a in D.items() for x in a};B='https://zombie-island.moy.su/';
+rows=[
+('buildings','kamin-skazochnyy-les-2014','Камин — Сказочный лес','blog/kamin_zombie_farm_postrojka_zombi_manija/2014-12-20-3402','zombie-farm/2014/1/kamin-zombie-farm-mania.png',{'Получение и срок':'Телепорт даётся за задание «Начало истории», купить нельзя. По статье он действует 30 дней после первого использования по назначению, затем превращается в подарок.','Строительство':'1: 25 кирпичей, 55 цемента, 15 кафеля — 200 опыта. 2: 25 жёлтой краски, 20 огня, 10 огненных обручей — 350 опыта.','Переезд':'На остров Сказочный лес: 50 000 монет, 5 снежков, 5 цемента. Под Камином копать нельзя.'}),
+('buildings','bumazhnyy-zamok-2014','Бумажный замок','blog/bumazhnyj_zamok_zombie_farm_postrojka_zombi_manija/2014-12-20-3403','zombie-farm/2014/1/bumazhnyj-zamok-zombie-farm-mania.png',{'Расположение':'Находится в Сказочном лесу, купить нельзя. Статья связывает появление с рождественским обновлением 20 декабря 2014.','Создание':'Шесть вариантов Дорожек: каждый по статье создаётся из 15 снежков и 5 единиц материала «Ёлочные шарики». Не путать с отдельным материалом «Ёлочный шарик» в единственном числе.','Превращение':'Статья сообщает о превращении замка в сундук после квеста «По плану».'}),
+('buildings','prazdnichnaya-el-2014','Праздничная ель — Сказочный лес','blog/prazdnichnaja_el_zombie_farm_postrojka_zombi_manija/2014-12-20-3404','zombie-farm/2014/1/prazdnichnaja-el-zombie-farm-mania.png',{'Расположение':'В Сказочном лесу по статье находятся три недостроенные ели; купить нельзя.','Стадии':'1: 15 синего пластилина, 25 снежков, 25 лампочек. 2: 15 супер-клея, 30 снежков, 20 синих сердец. 3: 25 снежков, 1 Ёлочный шарик (единственное число), 5 лунных камней. Каждая стадия — 20 опыта.'}),
+('buildings','strannyy-snegovik-2014','Странный снеговик — Сказочный лес','blog/strannyj_snegovik_zombie_farm_postrojka_mania/2014-12-20-3408','zombie-farm/ZombiFermaMania/Postroyka/snegovik-postroyka-games-igra-zombie-farm-mania.png',{'Расположение и функция':'Снеговик в Сказочном лесу показывает время появления следующего Мешка Санты. В нём можно создать зомби-Админа из 1 зомби-оскара и 15 чертовщин. Не отождествлять с обычным Снеговиком только по общей пиктограмме.','Стадии':'1: 5000 монет, 100 снежков, 35 цемента — 500 опыта. 2: 10 000 монет, 50 снежков, 45 цемента — 500 опыта. 3: 30 000 монет, 35 снежков, 50 цемента — 500 опыта. 4: 1 ведро, 1 перец чили, 2 бамбука — 100 опыта.'}),
+('materials','elochnye-shariki-2014','Ёлочные шарики','blog/elochnye_shariki_zombie_farm_material_mania/2014-12-20-3406','zombie-farm/2014/1/jolochnye-shariki.png',{'Получение':'По статье выпадают из мешков Санты в Сказочном лесу; нельзя купить, продажа 1500 монет. Ссылки на цвет мешка у источника местами подписаны противоречиво.','Применение':'Ингредиент шести вариантов дорожки в Бумажном замке. Не путать с отдельно описанным материалом «Ёлочный шарик» для Праздничной ели.'}),
+('materials','elochnyy-sharik-2014','Ёлочный шарик','blog/elochnyj_sharik_zombie_farm_material_mania/2014-12-20-3407','zombie-farm/2014/1/jolochnyj-sharik.png',{'Получение':'По статье даётся за задание «Условия победы», купить нельзя.','Применение':'Один шарик нужен на третьей стадии Праздничной ели. Отдельный материал «Ёлочные шарики» используется для дорожек.'})]
+hashes={}
+for p in (P/'img').rglob('*'):
+ if p.is_file():hashes.setdefault(hashlib.sha256(p.read_bytes()).hexdigest(),str(p.relative_to(P)))
+for cat,slug,name,article,picture,fields in rows:
+ if (cat,slug) in ix:continue
+ r=requests.get(B+picture,timeout=20);r.raise_for_status();Image.open(BytesIO(r.content)).verify();h=hashlib.sha256(r.content).hexdigest();path=hashes.get(h)
+ if not path:path=f'img/archive/fairy-forest-{slug}-{h[:12]}.png';(P/path).write_bytes(r.content);hashes[h]=path
+ image={'path':path,'retrieved_from':B+picture,'attribution':'http://zombicity.info/'+picture,'source_page':B+article,'note':'Исходный файл без перекодирования с альтернативного хоста. Совпадение с файлом исходной ссылки отдельно не проверено; авторство не установлено.'}
+ x={'slug':slug,'name':name,'category':cat,'type':'Постройка' if cat=='buildings' else 'Материал','purchase':'нет данных','sale':'нет данных','obtain':'нет данных','use':'нет данных','features':'нет данных','versions':'браузерная социальная версия; историческая статья, платформу уточнить','sources':[{'url':B+article,'label':'Zombie-island: историческая карточка Сказочного леса'}],'image':image,'links':[],'event':'Рождественское обновление 2014','original_category':'Постройки' if cat=='buildings' else 'Материалы','prior_records':[{'original_id':'fairy-forest-'+slug,'original_category':'Сказочный лес и связанные объекты','version':'браузерная игра; платформа не уточнена','date':'20.12.2014 — дата публикации; дата правок неизвестна','fields':fields,'confidence':'Фанатский источник; возможны ошибки и изменения версии. Исходное расположение объектов на острове не подтверждается текстовой карточкой.'}]}
+ D[cat].append(x);ix[(cat,slug)]=x
+for slug in ['kamin-skazochnyy-les-2014','bumazhnyy-zamok-2014','prazdnichnaya-el-2014','strannyy-snegovik-2014']:
+ x=ix['buildings',slug];t=ix['locations','zombicity-island-3405'];
+ if not any(l.get('category')=='locations' and l.get('slug')==t['slug'] for l in x['links']): x['links'].append({'category':'locations','slug':t['slug'],'name':t['name'],'relation':'связан с этой локацией'})
+for src,dst in [('bumazhnyy-zamok-2014','elochnye-shariki-2014'),('prazdnichnaya-el-2014','elochnyy-sharik-2014')]:
+ x=ix['buildings',src];t=ix['materials',dst];
+ if not any(l.get('category')=='materials' and l.get('slug')==dst for l in x['links']): x['links'].append({'category':'materials','slug':dst,'name':t['name'],'relation':'материал, см. рецепт или стадию'})
+for c in cats:(P/'data'/f'{c}.json').write_text(json.dumps(D[c],ensure_ascii=False,indent=2)+'\n')
+print('Обработано',len(rows),'сущностей')

@@ -1,0 +1,16 @@
+from pathlib import Path
+import json
+P=Path(__file__).resolve().parents[1];cats=['materials','plants','buildings','locations','quests'];D={c:json.loads((P/'data'/f'{c}.json').read_text()) for c in cats};ix={(c,x['slug']):x for c,a in D.items() for x in a}
+def link(src,dst,rel):
+ x,y=ix[src],ix[dst];links=x.setdefault('links',[])
+ if not any(a.get('category')==dst[0] and a.get('slug')==dst[1] for a in links):links.append({'category':dst[0],'slug':dst[1],'name':y['name'],'relation':rel})
+def record(key,id,url,fields):
+ x=ix[key]
+ if not any(s['url']==url for s in x['sources']):x['sources'].append({'url':url,'label':'Источник исторических дополнений'})
+ if not any(r.get('original_id')==id for r in x.setdefault('prior_records',[])):x['prior_records'].append({'original_id':id,'original_category':'Проверка исторических источников','version':'браузерная социальная версия; платформа и редакция требуют уточнения','date':'дата в адресе источника; дальнейшие правки неизвестны','fields':fields,'confidence':'Исторический фанатский источник, возможно позднее редактирование. Не переносить автоматически на другие версии.'})
+for quest,target,rel in [('star-harvest-starinnyy-klyuch-2717',('materials','starinnyy-klyuch-zvezdnyy-urozhay'),'награда по статье'),('star-harvest-ogurcy-2719',('plants','ogurec-zvezdnyy-urozhay'),'предмет задания'),('star-harvest-ogurcy-2719',('plants','serebristaya-pudra'),'предмет задания'),('star-harvest-shesteren-2722',('plants','shesteren-urozhay'),'предмет задания'),('star-harvest-proshchanie-2723',('buildings','zavodnoy-zhuk-2016'),'предмет задания'),('star-harvest-taynoe-ushchele-2725',('buildings','zavodnoy-zhuk-2016'),'предмет задания')]:link(('quests',quest),target,rel)
+for name in ['ogurec-zvezdnyy-urozhay','shesteren-urozhay','ventilyutiki','kolrabi','svetiki']:link(('materials','eleznoe-semechko'),('plants',name),'растение, указанное в статье семечка')
+record(('locations','zombicity-island-4334'),'star-harvest-gorge-quest','https://zombie-island.moy.su/blog/tajnoe_ushhele/2016-04-17-4346',{'Выращивание':'Квест «Тайное ущелье» прямо говорит о выращивании загадочных растений с Железными семечками; его задачи — достроить Жука, посетить ущелье и провести там 24 часа. Какие именно растения были доступны в момент выпуска, требует уточнения.'})
+record(('locations','zombicity-island-4316'),'forgotten-island-video','https://www.youtube.com/watch?v=hZu1rylY8iE',{'Видео':'Обзор Забытого острова от Zombicity.info; канал ILONA Li, 24.04.2016, 1:11. Подтверждены название и описание, видеоряд полностью не просмотрен. Дата и название не доказывают первоначальную расстановку.'})
+record(('locations','zombicity-island-4335'),'cellar-route-details','https://zombie-island.moy.su/blog/pogreb_prishelcev/2016-04-17-4335',{'Временный доступ':'Статья предупреждает, что после ухода по квестам нельзя вернуться в Погреб. Текст также упоминает сбор огурцов и возможные Железные семечки из крупных ресурсов; не все выпадают гарантированно.','Маршрут':'Вход с Космического хутора через Хижину, переход в шахту через Древний тоннель. Статья для возврата на хутор приводит 50 000 монет, 5 фольги и 5 Времени.'})
+for c in cats:(P/'data'/f'{c}.json').write_text(json.dumps(D[c],ensure_ascii=False,indent=2)+'\n')
