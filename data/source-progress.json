@@ -43,11 +43,11 @@
     },
     {
       "host": "www.fatalgame.com",
-      "known_urls": 57,
+      "known_urls": 62,
       "reviewed": 38,
-      "partly_compared": 9,
+      "partly_compared": 14,
       "unconfirmed": 10,
-      "saved_html": 9
+      "saved_html": 14
     },
     {
       "host": "zombi-ferma.ucoz.net",
