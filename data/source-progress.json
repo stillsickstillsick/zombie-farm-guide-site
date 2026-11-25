@@ -3,11 +3,11 @@
   "sites": [
     {
       "host": "zombie-island.moy.su",
-      "known_urls": 1611,
+      "known_urls": 1612,
       "reviewed": 630,
-      "partly_compared": 45,
+      "partly_compared": 46,
       "unconfirmed": 936,
-      "saved_html": 1014
+      "saved_html": 1015
     },
     {
       "host": "zombi.at.ua",
@@ -43,11 +43,11 @@
     },
     {
       "host": "www.fatalgame.com",
-      "known_urls": 77,
+      "known_urls": 80,
       "reviewed": 38,
-      "partly_compared": 29,
+      "partly_compared": 32,
       "unconfirmed": 10,
-      "saved_html": 29
+      "saved_html": 32
     },
     {
       "host": "zombi-ferma.ucoz.net",
