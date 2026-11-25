@@ -1,0 +1,509 @@
+{
+  "method": "Процент относится к известным URL, а не к содержимому сайта целиком. Сохранённая копия и ссылка не означают, что страница изучена. URL на разных схемах и доменах могут быть зеркалами; независимость не установлена. Сверка частичная.",
+  "sites": [
+    {
+      "host": "zombie-island.moy.su",
+      "known_urls": 1607,
+      "reviewed": 630,
+      "partly_compared": 40,
+      "unconfirmed": 937,
+      "saved_html": 1010
+    },
+    {
+      "host": "zombi.at.ua",
+      "known_urls": 1366,
+      "reviewed": 294,
+      "partly_compared": 2,
+      "unconfirmed": 1070,
+      "saved_html": 2
+    },
+    {
+      "host": "zf.3dn.ru",
+      "known_urls": 231,
+      "reviewed": 202,
+      "partly_compared": 0,
+      "unconfirmed": 29,
+      "saved_html": 0
+    },
+    {
+      "host": "web.archive.org",
+      "known_urls": 208,
+      "reviewed": 23,
+      "partly_compared": 0,
+      "unconfirmed": 185,
+      "saved_html": 0
+    },
+    {
+      "host": "viver.my1.ru",
+      "known_urls": 168,
+      "reviewed": 15,
+      "partly_compared": 0,
+      "unconfirmed": 153,
+      "saved_html": 0
+    },
+    {
+      "host": "www.fatalgame.com",
+      "known_urls": 51,
+      "reviewed": 38,
+      "partly_compared": 3,
+      "unconfirmed": 10,
+      "saved_html": 3
+    },
+    {
+      "host": "zombi-ferma.ucoz.net",
+      "known_urls": 44,
+      "reviewed": 14,
+      "partly_compared": 0,
+      "unconfirmed": 30,
+      "saved_html": 0
+    },
+    {
+      "host": "officialgroupzf.ucoz.ru",
+      "known_urls": 18,
+      "reviewed": 18,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "zombia.my1.ru",
+      "known_urls": 15,
+      "reviewed": 9,
+      "partly_compared": 0,
+      "unconfirmed": 6,
+      "saved_html": 0
+    },
+    {
+      "host": "www.youtube.com",
+      "known_urls": 11,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 11,
+      "saved_html": 0
+    },
+    {
+      "host": "zombiemail.do.am",
+      "known_urls": 11,
+      "reviewed": 6,
+      "partly_compared": 0,
+      "unconfirmed": 5,
+      "saved_html": 0
+    },
+    {
+      "host": "zombipedia.fandom.com",
+      "known_urls": 11,
+      "reviewed": 9,
+      "partly_compared": 0,
+      "unconfirmed": 2,
+      "saved_html": 0
+    },
+    {
+      "host": "zombi0.my1.ru",
+      "known_urls": 8,
+      "reviewed": 7,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zomboferma.ucoz.ru",
+      "known_urls": 7,
+      "reviewed": 4,
+      "partly_compared": 0,
+      "unconfirmed": 3,
+      "saved_html": 0
+    },
+    {
+      "host": "niebalbillbur.narod.ru",
+      "known_urls": 5,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 4,
+      "saved_html": 0
+    },
+    {
+      "host": "www.syl.ru",
+      "known_urls": 5,
+      "reviewed": 5,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "zombaks.ucoz.ru",
+      "known_urls": 4,
+      "reviewed": 4,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "social-zombie.livejournal.com",
+      "known_urls": 3,
+      "reviewed": 2,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "vk.com",
+      "known_urls": 3,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 2,
+      "saved_html": 0
+    },
+    {
+      "host": "zombiesforever.ucoz.ru",
+      "known_urls": 3,
+      "reviewed": 2,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombitime.com",
+      "known_urls": 3,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 3,
+      "saved_html": 0
+    },
+    {
+      "host": "zommbie.at.ua",
+      "known_urls": 3,
+      "reviewed": 2,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "irecommend.ru",
+      "known_urls": 2,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 2,
+      "saved_html": 0
+    },
+    {
+      "host": "my.mail.ru",
+      "known_urls": 2,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 2,
+      "saved_html": 0
+    },
+    {
+      "host": "www.bolshoyvopros.ru",
+      "known_urls": 2,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "www.friedela.de",
+      "known_urls": 2,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombia.ucoz.net",
+      "known_urls": 2,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 2,
+      "saved_html": 0
+    },
+    {
+      "host": "zombicity.info",
+      "known_urls": 2,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 2,
+      "saved_html": 0
+    },
+    {
+      "host": "zombio-ferma.ucoz.ru",
+      "known_urls": 2,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "3om6i-kjlongaik.ucoz.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "fb.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "foggyhh.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "foreststory.forumieren.de",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "gamelinkexchange.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "gamersunite.coolchaser.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "gameskip.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "golg-super-fo.ucoz.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "grynamnk.wordpress.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "habboxwiki.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "hayerov.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "otzovik.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "pliego.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "rubrikator.org",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "shara-games.ru",
+      "known_urls": 1,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "sites.google.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "swiat-wgzombie.blogspot.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "vk.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "vknews.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "www.adweek.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "www.desercik.pl",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "www.fanatsporta.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "www.gamezebo.com",
+      "known_urls": 1,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "www.ilovefreesoftware.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "www.reviewstream.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zferma.at.ua",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombastiki.ucoz.org",
+      "known_urls": 1,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "zombi-ferma.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombi-mania.at.ua",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombi-obmenka.ucoz.ru",
+      "known_urls": 1,
+      "reviewed": 1,
+      "partly_compared": 0,
+      "unconfirmed": 0,
+      "saved_html": 0
+    },
+    {
+      "host": "zombi.vx5.ru",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombie-farm.blogspot.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombieislandfb.pl.tl",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    },
+    {
+      "host": "zombiesrenegados.blogspot.com",
+      "known_urls": 1,
+      "reviewed": 0,
+      "partly_compared": 0,
+      "unconfirmed": 1,
+      "saved_html": 0
+    }
+  ]
+}

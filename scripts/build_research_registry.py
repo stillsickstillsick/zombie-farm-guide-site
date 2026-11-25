@@ -19,6 +19,13 @@ for e in logs:
  if e.get('status')=='downloaded_unreviewed' and (B/'pages'/f"{e.get('id')}.html").exists():byid[e['id']]=e
 for i,e in byid.items():
  r=get(e['final_url']);r.update(id=str(i),заголовок=e.get('title',''),локальный_файл=f'research/session-materials/bulk-research/pages/{i}.html',sha256=hashlib.sha256((B/'pages'/f'{i}.html').read_bytes()).hexdigest());r['доказательства'].add('Сохранена страница; проведена техническая инвентаризация')
+# Additional source bytes saved during the current reviewed batch.
+extra=P/'research/reviewed-sources/manifest.json'
+if extra.exists():
+ for e in json.loads(extra.read_text()):
+  f=extra.parent/(e['id']+'.html');assert hashlib.sha256(f.read_bytes()).hexdigest()==e['sha256']
+  r=get(e['url']);r['доказательства'].add('Сохранена отдельная страница, SHA-256 проверен')
+  if not r['локальный_файл']:r.update(локальный_файл=str(f.relative_to(P)),sha256=e['sha256'])
 # Explicitly include all 70 source-catalog entries, their structured links, and URLs in their summaries.
 catalog=json.loads((P/'data/sources.json').read_text())
 source_fields=['номер','название','категория','основной_url','описание_из_каталога','связанные_url']
@@ -66,6 +73,17 @@ for i in range(2655,2689):
 for i,scope in {2273:'Сопоставлены три исторические цены с ZOMBIA; происхождение обычных дублонов от Сильвера не указано.',2304:'Сопоставлены открытие дома и перечисленные Плохая и Тропическая коллекции с ZOMBIA; вероятности не указаны.',2305:'Сопоставлены открытие дома и названия трёх коллекций с ZOMBIA; вероятности не указаны.',2306:'Сопоставлены открытие дома и названия трёх коллекций с ZOMBIA; вероятности не указаны.'}.items():
  if i not in byid:continue
  r=get(byid[i]['final_url']);r['статус']='Сверена с другим источником (частично)';r['объём_сверки']=scope;r['доказательства'].add('scripts/enrich_cached_pirate_treasures.py; отдельная запись ZOMBIA в соответствующей карточке')
+# Explicit, limited comparisons: claims, not entire websites, were compared.
+reviewed={
+'https://www.fatalgame.com/answer/zombiferma/найти-древний-сундук-в-игре-зомби-ферма':'Состав в статье сопоставлен с ZOMBIA: 1000 сердец и 500000 монет; цена 25 голосов указана только ZOMBIA.',
+'https://zombi.at.ua/board/materialy/quot_slozhnye_quot_materialy/drevnij_sunduk/7-1-0-741':'Сопоставлен состав древнего сундука с FatalGame; дата правок и независимость не установлены.',
+'https://www.fatalgame.com/answer/zombiferma/фантастический-сундук-в-игре-зомби-ферма':'Цена 500 голосов сопоставлена с ZOMBIA; расхождение 1000 против 6000 зомбаксов.',
+'https://zombi.at.ua/board/materialy/quot_slozhnye_quot_materialy/krutoj_sunduk/7-1-0-744':'Цена сопоставлена с FatalGame; расхождение 6000 против 1000 зомбаксов.',
+'https://www.fatalgame.com/answer/zombiferma/искать-сундук-мертвеца-в-игре-зомби-ферма':'70 дублонов при первом открытии сопоставлены с Zombie-island; независимость неизвестна.',
+'https://zombie-island.moy.su/blog/sunduk_mertveca_sokrovishhe_zombie_farm_gde_vzjat_mania/2013-10-30-2315':'70 дублонов за первое открытие сопоставлены с FatalGame; статья отредактирована после даты URL 2013-10-30, поскольку новость 2013-11-22 говорит об увеличении с 50 до 70.',
+'https://zombie-island.moy.su/news/22_nojabrja_za_dobychej_trjumy_kapitanov_lomjatsja_ot_nagrablennogo/2013-11-22-130':'Датировка увеличения награды с 50 до 70 сопоставлена со статьёй того же сайта и с FatalGame; это не независимые редакции новости.'}
+for url,scope in reviewed.items():
+ r=get(url);r['статус']='Сверена с другим источником (частично)';r['объём_сверки']=scope;r['доказательства'].add('Сохранены статьи и выборочно сопоставлены данные; см. соответствующие карточки сундуков.')
 for r in rows.values():
  if r['id']=='2262':r['примечание'].add('Сохранённый HTML не содержит распознаваемых title или h1; проверить вручную.')
  if r['id']=='3776':r['примечание'].add('Дата в URL — 2015, индекс относит к цепочке 2016; дата создания/правки неизвестна.')
@@ -75,7 +93,7 @@ with (OUT/'реестр-страниц.csv').open('w',encoding='utf-8-sig',newli
  w=csv.DictWriter(f,fieldnames=cols);w.writeheader()
  for r in sorted(rows.values(),key=lambda v:(urllib.parse.urlsplit(v['url']).hostname,v['url'])):
   w.writerow({k:' | '.join(sorted(v)) if isinstance(v,set) else v for k,v in r.items()})
-summary=['# Реестр источников: область охвата и методика','','Реестр учитывает все 70 записей каталога data/sources.json (основные адреса, связанные ссылки и URL из описаний), сохранённые HTML-страницы bulk-research и URL источников из карточек основных категорий data/*.json. Отдельный каталог-источников.csv сохраняет имена, категории и исходные описания всех 70 записей. Это не полный список страниц интернета или всех материалов каждого сайта; внешние находки, не внесённые в эти данные, могут отсутствовать.','',f'Всего уникальных URL в реестре: {len(rows)}.',f'Из них сохранённые HTML: {len(saved)}.','', '## Статусы']
+summary=['# Реестр источников: область охвата и методика','','Реестр учитывает все 70 записей каталога data/sources.json (основные адреса, связанные ссылки и URL из описаний), сохранённые HTML-страницы bulk-research и reviewed-sources и URL источников из карточек основных категорий data/*.json. Отдельный каталог-источников.csv сохраняет имена, категории и исходные описания всех 70 записей. Это не полный список страниц интернета или всех материалов каждого сайта; внешние находки, не внесённые в эти данные, могут отсутствовать.','',f'Всего уникальных URL в реестре: {len(rows)}.',f'Из них сохранённые HTML: {len(saved)}.','', '## Статусы']
 for k,v in sorted(counts.items()):summary.append(f'- {k}: {v} / {len(rows)} ({100*v/len(rows):.1f}%).')
 summary+=['','## Только сохранённые HTML']
 for k,v in sorted(savedc.items()):summary.append(f'- {k}: {v} / {len(saved)} ({100*v/len(saved):.1f}%).')
